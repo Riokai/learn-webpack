@@ -113,3 +113,11 @@ webpack --progress --colors --watch
 ```
 
 ## 开发服务器
+
+如果能有一个开发服务器就更妙了
+
+```bash
+npm install webpack-dev-server -g
+
+webpack-dev-server --progress --colors
+```
