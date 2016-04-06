@@ -60,4 +60,56 @@ require("!style!css!./style.css");
 
 重新编译并用浏览器查看结果，会发现页面背景变成黄色。
 
-## 绑定loaders
+## 配置文件
+
+每次编译的时候输入过长的字符对于程序猿是个折磨，更好的办法是将其写入到配置文件中。
+
+新建一个名为`webpack.config.js`的文件
+
+```js
+module.exports = {
+    entry: "./entry.js",
+    output: {
+        path: __dirname,
+        filename: "bundle.js"
+    },
+    module: {
+        loaders: [
+            { test: /\.css$/, loader: "style!css" }
+        ]
+    }
+};
+```
+
+现在，我们只需要在命令行中运行`webpack`
+
+webpack output
+
+```bash
+Hash: 3b0c30ec48200e410020
+Version: webpack 1.12.14
+Time: 603ms
+    Asset     Size  Chunks             Chunk Names
+bundle.js  11.8 kB       0  [emitted]  main
+   [0] ./entry.js 64 bytes {0} [built]
+   [5] ./content.js 46 bytes {0} [built]
+    + 4 hidden modules
+```
+
+## 更美观的输出
+
+随着项目的日渐庞大，编译时间很有可能越来越久，所以我们希望能够出现一个进度条，当然如果能有艳丽的颜色更棒！
+
+```bash
+webpack --progress --colors
+```
+
+## 监控模式
+
+我们不希望每次修改代码后都需要手动去编译它。
+
+```bash
+webpack --progress --colors --watch
+```
+
+## 开发服务器
