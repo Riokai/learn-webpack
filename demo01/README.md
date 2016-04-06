@@ -59,3 +59,5 @@ require("!style!css!./style.css");
 ```
 
 重新编译并用浏览器查看结果，会发现页面背景变成黄色。
+
+## 绑定loaders
