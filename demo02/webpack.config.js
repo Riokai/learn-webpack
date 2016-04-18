@@ -13,10 +13,16 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     hot: true,
-    inline: true,
+    inline: false,
     progress: true,
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"development"'
+      },
+      'abc': JSON.stringify('test')
+    })
   ]
 }
